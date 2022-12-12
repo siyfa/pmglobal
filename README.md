@@ -25,126 +25,123 @@ $ npm run dev
 
 ### Request
 
-`POST /user/`
+`POST 72.55.189.245/users/`
 
-    curl -i -H 'Accept: application/json' http://localhost:7000/user/
+    curl -i -H 'Accept: application/json' 72.55.189.245/users/
 
 ### Response
 
-    HTTP/1.1 200 OK
-    Date: Thu, 24 Feb 2011 12:36:30 GMT
-    Status: 200 OK
+    HTTP/1.1 200 
+    Status: 200
     Connection: close
     Content-Type: application/json
-    Content-Length: 2
-
     []
+
+    req.body = {
+        "username": "test",
+        "firstname": "John",
+        "lastname": "Doe",
+        "gender": "M",
+        "password": "pass1234",
+        "date_of_birth": "01/06/1990"
+    }
 
 ## Filter users
 
 ### Request
 
-`GET /users/`
+`GET 72.55.189.245/users/`
 
-    curl -i -H 'Accept: application/json' -d 'name=Foo&status=new' http://localhost:7000/usersusers?filter_field=firstname&filter_value=john&page=1&sort_order_mode=asc&sort_field:firstname
+    curl -i -H 'Accept: application/json' -d 'name=Foo&status=new' 72.55.189.245/usersusers?filter_field=firstname&filter_value=john&page=1&sort_order_mode=asc&sort_field:firstname
 
 ### Response
 
-    HTTP/1.1 201 Created
-    Date: Thu, 24 Feb 2011 12:36:30 GMT
-    Status: 201 Created
+    HTTP/1.1 200 
+    Status: 200 
     Connection: close
     Content-Type: application/json
-    Location: /thing/1
-    Content-Length: 36
 
-    Query fields-
-    
-    -filter_field
-    -filter_value
-    -page
-    -pageSize
-    -sort_order_mode
-        -asc
-        -desc
-    -sort_field
-        -firstname
-        -lastname
-        -username
-        -gender
-        -date_of_birth
-        -_id
+    req.query -
+        -filter_field
+        -filter_value
+        -page
+        -pageSize
+        -sort_order_mode
+            -asc
+            -desc
+        -sort_field
+            -firstname
+            -lastname
+            -username
+            -gender
+            -date_of_birth
+            -_id
 
 ## Get a user
 
 ### Request
 
-`GET /users/id`
+`GET 72.55.189.245/users/id`
 
-    curl -i -H 'Accept: application/json' http://localhost:7000/thing/1
+    curl -i -H 'Accept: application/json' 72.55.189.245/users/{{id}}
 
 ### Response
 
     HTTP/1.1 200 OK
-    Date: Thu, 24 Feb 2011 12:36:30 GMT
     Status: 200 OK
     Connection: close
     Content-Type: application/json
-    Content-Length: 36
 
 ## Modify a user
 
 ### Request
 
-`PUT /users/id`
+`PUT 72.55.189.245/users/id`
 
-    curl -i -H 'Accept: application/json' http://localhost:7000/thing/9999
+    curl -i -H 'Accept: application/json' 72.55.189.245/users/{{id}}
 
 ### Response
 
-    HTTP/1.1 404 Not Found
-    Date: Thu, 24 Feb 2011 12:36:30 GMT
-    Status: 404 Not Found
+    HTTP/1.1 200
+    Status: 200
     Connection: close
     Content-Type: application/json
-    Content-Length: 35
 
 
 ## Delete a user
 
 ### Request
 
-`DELETE /users/`
+`DELETE 72.55.189.245/users/`
 
-    curl -i -H 'Accept: application/json' -d 'name=Bar&junk=rubbish' http://localhost:7000/thing
+    curl -i -H 'Accept: application/json' 72.55.189.245/users/{{id}}
 
 ### Response
 
-    HTTP/1.1 201 Created
-    Date: Thu, 24 Feb 2011 12:36:31 GMT
-    Status: 201 Created
+    HTTP/1.1 200
+    Status: 200
     Connection: close
     Content-Type: application/json
-    Location: /thing/2
-    Content-Length: 35
 
 ## Login
 
 ### Request
 
-`POST /users/login`
+`POST 72.55.189.245/users/login`
 
-    curl -i -H 'Accept: application/json' http://localhost:7000/thing/
+    curl -i -H 'Accept: application/json' 72.55.189.245/users/login
 
 ### Response
 
     HTTP/1.1 200 OK
-    Date: Thu, 24 Feb 2011 12:36:31 GMT
     Status: 200 OK
     Connection: close
     Content-Type: application/json
-    Content-Length: 74
 
+    req.body = {
+        "username": "test",
+        "password": "pass1234"
+    }
 
 ### Author
 
