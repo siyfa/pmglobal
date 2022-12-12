@@ -21,6 +21,12 @@ $ npm install
 $ npm run dev
 ```
 
+### Server Ip address (No domain name)
+
+```sh
+$ 72.55.189.245
+```
+
 ### Create new user
 
 ### Request
@@ -28,6 +34,15 @@ $ npm run dev
 `POST 72.55.189.245/users/`
 
     curl -i -H 'Accept: application/json' 72.55.189.245/users/
+
+    req.body = {
+        "username": "test",
+        "firstname": "John",
+        "lastname": "Doe",
+        "gender": "M",
+        "password": "pass1234",
+        "date_of_birth": "01/06/1990"
+        }
 
 ### Response
 
@@ -37,14 +52,6 @@ $ npm run dev
     Content-Type: application/json
     []
 
-    req.body = {
-        "username": "test",
-        "firstname": "John",
-        "lastname": "Doe",
-        "gender": "M",
-        "password": "pass1234",
-        "date_of_birth": "01/06/1990"
-    }
 
 ## Filter users
 
@@ -52,14 +59,9 @@ $ npm run dev
 
 `GET 72.55.189.245/users/`
 
-    curl -i -H 'Accept: application/json' -d 'name=Foo&status=new' 72.55.189.245/usersusers?filter_field=firstname&filter_value=john&page=1&sort_order_mode=asc&sort_field:firstname
+    curl -i -H 'Accept: application/json' 72.55.189.245/users
 
-### Response
-
-    HTTP/1.1 200 
-    Status: 200 
-    Connection: close
-    Content-Type: application/json
+    curl -i -H 'Accept: application/json' 72.55.189.245/users?filter_field=firstname&filter_value=john&page=1&sort_order_mode=asc&sort_field=firstname
 
     req.query -
         -filter_field
@@ -76,6 +78,14 @@ $ npm run dev
             -gender
             -date_of_birth
             -_id
+
+### Response
+
+    HTTP/1.1 200 
+    Status: 200 
+    Connection: close
+    Content-Type: application/json
+
 
 ## Get a user
 
@@ -131,17 +141,17 @@ $ npm run dev
 
     curl -i -H 'Accept: application/json' 72.55.189.245/users/login
 
+    req.body = {
+        "username": "test",
+        "password": "pass1234"
+    }
+    
 ### Response
 
     HTTP/1.1 200 OK
     Status: 200 OK
     Connection: close
     Content-Type: application/json
-
-    req.body = {
-        "username": "test",
-        "password": "pass1234"
-    }
 
 ### Author
 
